@@ -1,10 +1,19 @@
+import Feature from "@/component/Feature";
+import Hero from "@/component/Hero";
+import PopulerItem from "@/component/PopulerItem";
+import PromotionalBanner from "@/component/PromotionalBanner";
+import Testimonial from "@/component/Testimonial";
 
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="">
         <h1>
-          Root file
+          <Hero/>
+          <Feature/>
+          <PopulerItem/>
+          <Testimonial/>
+          <PromotionalBanner/>
         </h1>
     </div>
   );

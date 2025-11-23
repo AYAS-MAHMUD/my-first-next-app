@@ -14,7 +14,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="w-full  shadow-md fixed top-0 left-0 z-50">
+    <nav className="w-full bg-transparent backdrop-blur  shadow-md fixed top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center gap-2 text-2xl font-bold text-blue-600">
           <span>YouStore</span>
@@ -39,7 +39,7 @@ export default function Navbar() {
         </button>
       </div>
       {open && (
-        <div className="md:hidden shadow-lg px-6 pb-4">
+        <div className="md:hidden bg-transparent backdrop-blur  shadow-lg px-6 pb-4">
           <ul className="flex flex-col gap-4 text-lg font-medium mt-2">
             {links.map((link) => (
               <li key={link.name} className="hover:text-blue-600 cursor-pointer transition">

@@ -4,10 +4,10 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className=" text-slate-300 rounded-t-3xl overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 py-16">
+    <footer className=" text-slate-300 mt-20 rounded-t-3xl overflow-hidden border-t-2 border-blue-400 py-10">
+      <div className="max-w-7xl mx-auto px-6 py-1">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            
+
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
