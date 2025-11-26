@@ -1,3 +1,47 @@
+# Next.js Full-Stack App – Public & Protected Pages (NextAuth + Express.js Backend)
+
+A modern full-stack application built with **Next.js (App Router)**, **Firebase**, and a simple **Express.js backend**.  
+This project includes public pages, protected routes, authentication, product management, and a responsive polished UI.
+
+---
+
+## 🚀 Features Overview
+
+### 🔓 Public Pages
+- Landing page with 
+- Sticky, responsive **Navbar**
+- Hero section 
+- 4 themed feature sections with uniform cards
+- Footer with links & social icons
+- Login/Register page
+- Item List (Products) page
+- Item Details page
+
+### 🔐 Protected Pages
+Accessible only when logged in:
+- **Add Product** – form to create a new product  
+- **Manage Products** – view & delete items  
+
+### 🧩 Tech Stack
+- **Next.js 14+ (App Router)**
+- **Firebase** (Google + Credentials)
+- **Tailwind CSS**
+- **Lucide Icons**
+- **Express.js backend**
+- **MongoDB** or in-memory JSON
+- **Axios** 
+- **React Icons** 
+- **Sweetalert2** 
+- **React-hot-toast** 
+
+
+---
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
