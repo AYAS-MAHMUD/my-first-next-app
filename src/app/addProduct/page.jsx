@@ -2,6 +2,8 @@
 import PrivetProvider from "@/component/AuthProvider/PrivetProvider";
 import axios from "axios";
 import React from "react";
+import { motion } from 'framer-motion';
+import toast from "react-hot-toast";
 
 const addProduct = () => {
   const handleSubmit = (e) => {
@@ -9,29 +11,32 @@ const addProduct = () => {
     // Handle form submission logic here
     const form = e.target;
     const title = form.title.value;
-    const imageUrl = form.imageUrl.value;
+    const image = form.image.value;
     const price = form.price.value;
     const description = form.description.value;
     const category = form.category.value;
-    const ProductData = { title, imageUrl, price, description, category };
+    const ProductData = { title, image, price, description, category };
     // console.log(formData);
-    alert("Form submitted!");
+    toast.success("Form submitted!");
     axios
-      .post("http://localhost:8001/products", ProductData)
+      .post("https://firstnextjs-khaki.vercel.app/products", ProductData)
       .then((response) => {
         console.log("Product added successfully:", response.data);
       })
       .catch((error) => {
         console.error("Error adding product:", error);
+        toast.error("Failed to add product.");
       });
   };
 
   return (
     <PrivetProvider>
       <div>
-        <h1 className="text-4xl font-bold py-5 text-center mt-40 mx-2" >
-          Add Product Page
-        </h1>
+        <motion.h1 initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }} className="text-4xl font-bold py-5 text-center mt-40 mx-2" >
+          Add Product 
+        </motion.h1>
         <form
           onSubmit={handleSubmit}
           className="flex border rounded-2xl mx-2 p-5 flex-col gap-4 max-w-md mx-auto"
@@ -42,7 +47,7 @@ const addProduct = () => {
           <input
             required
             placeholder="image url"
-            name="imageUrl"
+            name="image"
             className="border p-2"
           />
           <label>Price</label>
@@ -63,9 +68,26 @@ const addProduct = () => {
             <option value="books">Books</option>
           </select>
 
-          <button type="submit" className="bg-blue-500 text-white p-2">
+          <motion.button whileHover={{
+                  scale: 1,
+                  backgroundColor: "#4f46e5",
+                  color: "#fff",
+                }}
+                whileTap={{
+                  scale: 1.1,
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+                style={{
+                  padding: "12px 25px",
+                  borderRadius: "8px",
+                  border: "none",
+                  background: "#6366f1",
+                  color: "#fff",
+                  fontSize: "16px",
+                  cursor: "pointer",
+                }} type="submit" className="bg-blue-500 text-white p-2">
             Submit
-          </button>
+          </motion.button>
         </form>
       </div>
     </PrivetProvider>

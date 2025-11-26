@@ -2,6 +2,7 @@
 
 import { AuthContext } from "@/component/AuthProvider/AuthProvider";
 import React, { use } from "react";
+import { motion } from 'framer-motion';
 
 export default function Profile({
   name = "Ayas Mahmud",
@@ -25,14 +26,16 @@ export default function Profile({
             {/* Avatar - centered and overlapping the gradient */}
             <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <div className="rounded-full p-3 bg-white shadow-xl">
-                <div className="rounded-full overflow-hidden w-36 h-36 bg-gray-200">
+                <motion.div animate={{ scale: 1.2 }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+ className="rounded-full overflow-hidden w-36 h-36 bg-gray-200">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
+                  
                     src={user?.photoURL || imageUrl}
                     alt={user?.displayName || name}
                     className="w-full h-full object-cover"
                   />
-                </div>
+                </motion.div>
               </div>
             </div>
 

@@ -1,24 +1,26 @@
 "use client";
 import PrivetProvider from "@/component/AuthProvider/PrivetProvider";
 import Loader from "@/component/Loader";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const manageProduct = () => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [Data, setData] = useState([]);
   //   console.log(data)
   useEffect(() => {
-    const data = fetch("http://localhost:8001/products")
+    const data = fetch("https://firstnextjs-khaki.vercel.app/products")
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) => setData(data.result));
     setLoading(false);
   }, []);
 
   if (loading) {
     return <Loader />;
   }
-  const handledelete = () => {
+  
+  const handledelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -29,19 +31,18 @@ const manageProduct = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8001/products/${data._id}`, {
+        fetch(`https://firstnextjs-khaki.vercel.app/products/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
                 icon: "success",
               });
-              const remaining = data.filter((product) => product._id !== data._id);
+              const remaining = Data.filter((product) => product._id !== id);
               setData(remaining);
             }
           });
@@ -65,13 +66,13 @@ const manageProduct = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((product) => (
-              <tr key={product.id} className="border gap-2">
+            {Data.map((product) => (
+              <tr key={product._id} className="border gap-2">
                 <td>
                   <img
-                    src={product.imageUrl}
+                    src={product.image}
                     alt={product.title}
-                    className="w-10 h-10 object-cover"
+                    className="w-15 h-15 object-cover p-2"
                   />
                 </td>
                 <td>{product.title}</td>
@@ -79,12 +80,16 @@ const manageProduct = () => {
 
                 <td>{product.category}</td>
                 <td>
-                  <button className="bg-blue-500 text-white px-2 py-1 rounded mr-2">
+                  <Link href={`/ProductsDetail/${product._id}`}><button
+                  
+                    className="bg-indigo-500 hover:bg-indigo-700 text-white px-2 py-1 rounded mr-2"
+                  >
                     View
-                  </button>
+                  </button></Link>
+                  
                   <button
-                    onClick={handledelete}
-                    className="bg-red-500 text-white px-2 py-1 rounded"
+                    onClick={() => handledelete(product._id)}
+                    className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded"
                   >
                     Delete
                   </button>

@@ -13,7 +13,7 @@ const detailspage = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8001/products/${id}`)
+    fetch(`https://firstnextjs-khaki.vercel.app/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);

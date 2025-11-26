@@ -30,14 +30,14 @@ export default function Navbar() {
   return (
     <nav className="w-full bg-transparent backdrop-blur  shadow-md fixed top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center gap-2 text-2xl font-bold text-blue-600">
+        <div className="flex items-center gap-2 text-2xl font-bold text-indigo-500">
           <span>YouStore</span>
         </div>
         <ul className="hidden md:flex gap-6 text-lg font-medium">
           {links.map((link) => (
             <li
               key={link.name}
-              className="hover:text-blue-600 cursor-pointer transition"
+              className="hover:text-indigo-500 cursor-pointer transition"
             >
               <Link href={link.href}>{link.name}</Link>
             </li>
@@ -86,8 +86,8 @@ export default function Navbar() {
                 >
                   Logout
                 </button>
-                <Link className="bg-blue-500 px-4 py-2 rounded-lg transition ease-in-out hover:bg-blue-700" href="/addProduct">Add Product</Link>
-                <Link className="bg-blue-500 px-2 py-2 rounded-lg transition ease-in-out hover:bg-blue-700" href="/manageProduct">Manage Product</Link>
+                <Link className="bg-indigo-500 px-4 py-2 rounded-lg transition ease-in-out hover:bg-indigo-700" href="/addProduct">Add Product</Link>
+                <Link className="bg-indigo-500 px-2 py-2 rounded-lg transition ease-in-out hover:bg-indigo-700" href="/manageProduct">Manage Product</Link>
               </div>
             )
           }
@@ -102,7 +102,7 @@ export default function Navbar() {
             {links.map((link) => (
               <li
                 key={link.name}
-                className="hover:text-blue-600 cursor-pointer transition"
+                className="hover:text-indigo-500 cursor-pointer transition"
               >
                 <Link href={link.href}>{link.name}</Link>
               </li>
@@ -150,8 +150,8 @@ export default function Navbar() {
                 >
                   Logout
                 </button>
-                <Link className="bg-blue-500 px-2 py-2 rounded-lg transition ease-in-out hover:bg-blue-700" href="/addProduct">Add Product</Link>
-                <Link className="bg-blue-500 px-2 py-2 rounded-lg transition ease-in-out hover:bg-blue-700" href="/manageProduct">Manage Product</Link>
+                <Link className="bg-indigo-500 px-2 py-2 rounded-lg transition ease-in-out hover:bg-indigo-700" href="/addProduct">Add Product</Link>
+                <Link className="bg-indigo-500 px-2 py-2 rounded-lg transition ease-in-out hover:bg-indigo-700" href="/manageProduct">Manage Product</Link>
               </div>
             )
           }

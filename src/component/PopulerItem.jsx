@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react'
 import { FaArrowRight } from 'react-icons/fa';
 import Loader from './Loader';
+import { motion } from 'framer-motion';
 
 const PopulerItem = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    const data = fetch('http://localhost:8001/latest-products')
+    const data = fetch('https://firstnextjs-khaki.vercel.app/latest-products')
     .then(res=>res.json())
     .then(data=>setProducts(data))
     setLoading(false);
@@ -22,16 +23,16 @@ const PopulerItem = () => {
       <section className="max-w-7xl mx-auto py-16">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-3xl font-bold tracking-tight">Popular Items</h2>
+            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-3xl font-bold tracking-tight">Popular Items</motion.h2>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {/* card */}
             {
               products.map(product=>(
-              <div key={product._id} className="bg-white text-black p-4 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+              <motion.div initial={{opacity: 0,scale: 0.9}} whileInView={{opacity: 1, scale: 1}} transition={{duration : 1}} key={product._id} className="bg-white text-black p-4 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
                 
-                <div className=" bg-gray-200 rounded-2xl mb-3 text-left">
-                    <img className="h-60" src={product.image} alt={product.title} />
+                <div className=" bg-gray-200 hover:scale-105 overflow-hidden transition ease-in-out rounded-2xl mb-3 text-left">
+                    <img className="h-60 w-full object-cover rounded-2xl hover:scale-105 transition-transform duration-300" src={product.image} alt={product.title} />
                 </div>
                 <h1 className="font-bold text-xl my-3">{product.title}</h1>
                 <p>{product.description}</p>
@@ -39,7 +40,7 @@ const PopulerItem = () => {
                   <p className='font-bold text-xl'>Price : {product.price}</p>
                   <Link href={`/ProductsDetail/${product._id}`} className='text-blue-600 flex items-center gap-1 font-bold' >Details<FaArrowRight /></Link>
                 </div>
-            </div>  
+            </motion.div>  
               ))
             }
             
